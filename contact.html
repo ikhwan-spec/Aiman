@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoltVault Solar | Live System Gallery</title>
+    <title>VoltVault Solar | Contact an Energy Consultant</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,35 +13,30 @@
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="features.html">Features</a>
-            <a href="gallery.html" class="active">Gallery</a>
-            <a href="contact.html">Contact</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html" class="active">Contact</a>
         </nav>
     </header>
 
     <main class="page">
         <div class="container-narrow">
-            <span class="badge">Deployment Cases</span>
-            <h2>Architectural Transformations</h2>
-            <p class="lead-text">See how seamlessly the VoltVault solar reservoir structure deploys along outer walls and high-tech utility garages.</p>
+            <span class="badge">Engineering Consultations</span>
+            <h2>Begin Your Grid Independence</h2>
+            <p class="lead-text">Provide us with a rough layout of your roof space and current billing estimates, and our senior clean energy architects will plan a safe installation blueprint map.</p>
         </div>
         
-        <div class="grid">
-            <div class="card" style="text-align:center;">
-                <div style="font-size: 3rem; margin-bottom:1rem;">🏡</div>
-                <h3>Sleek Modern Residence</h3>
-                <p style="text-align:center;">Wall-mounted clean installation running an entire suburban grid entirely off-the-grid.</p>
-            </div>
-            <div class="card" style="text-align:center;">
-                <div style="font-size: 3rem; margin-bottom:1rem;">🏎️</div>
-                <h3>Smart EV Garage Setup</h3>
-                <p style="text-align:center;">Integrated alongside dual electric vehicle ports for maximum charging speeds.</p>
-            </div>
-            <div class="card" style="text-align:center;">
-                <div style="font-size: 3rem; margin-bottom:1rem;">⛈️</div>
-                <h3>Emergency Backup Command</h3>
-                <p style="text-align:center;">Keeping lighting arrays and medical systems running during central infrastructure blackout periods.</p>
-            </div>
-        </div>
+        <form onsubmit="event.preventDefault(); alert('Solar profile received! An energy architect will call you within 24 hours.');">
+            <label for="name">Property Owner Name</label>
+            <input type="text" id="name" placeholder="Sarah Jenkins" required>
+            
+            <label for="email">Contact Email Address</label>
+            <input type="email" id="email" placeholder="sarah@greenhome.com" required>
+            
+            <label for="message">Rooftop Size / Current Energy Company</label>
+            <textarea id="message" rows="5" placeholder="Example: 1200 sq ft flat roof, currently with Main Grid Power..." required></textarea>
+            
+            <button type="submit" class="btn">Submit for Solar Assessment</button>
+        </form>
     </main>
 
     <footer><p>&copy; 2026 VoltVault Solar Technologies Inc.</p></footer>
