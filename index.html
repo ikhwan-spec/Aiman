@@ -13,20 +13,7 @@
 
         <!-- Gemini-Style Collapsible Sidebar -->
         <aside class="sidebar-nav" id="sidebar">
-            <!-- Restores the collapsed/expanded state instantly, before paint, so the
-                 sidebar no longer "pops" back open on every page navigation -->
-            <script>
-                // Self-contained: restores state on load AND defines the toggle
-                // function, so this no longer depends on a separate JS file loading.
-                if (localStorage.getItem('stSidebarCollapsed') === '1') {
-                    document.getElementById('sidebar').classList.add('collapsed');
-                }
-                function toggleSidebar() {
-                    const sidebar = document.getElementById('sidebar');
-                    sidebar.classList.toggle('collapsed');
-                    localStorage.setItem('stSidebarCollapsed', sidebar.classList.contains('collapsed') ? '1' : '0');
-                }
-            </script>
+            <!-- Note: The script block has been removed from here to prevent execution errors -->
 
             <!-- Top Action Group (Hamburger Toggle) -->
             <div class="sidebar-top">
@@ -36,7 +23,7 @@
                 <h1 class="nav-brand-text">Smart<span>Transport</span></h1>
             </div>
 
-            <!-- Big Logo Zone (Fades out gracefully when bar shrinks) -->
+            <!-- Big Logo Zone -->
             <div class="sidebar-logo-zone">
                 <a href="index.html" class="logo-link" aria-label="Go to homepage">
                     <img src="assets/logo.png" alt="Brand Logo" class="sidebar-brand-logo">
@@ -130,6 +117,22 @@
         </div> <!-- End content-wrapper -->
     </div> <!-- End app-layout -->
 
+    <!-- SAFE SCRIPTS AT THE BOTTOM -->
+    <script>
+        // 1. Instantly check storage and apply collapsed state
+        const sidebar = document.getElementById('sidebar');
+        if (localStorage.getItem('stSidebarCollapsed') === '1' && sidebar) {
+            sidebar.classList.add('collapsed');
+        }
 
+        // 2. Define the toggle behavior
+        function toggleSidebar() {
+            const sidebarElement = document.getElementById('sidebar');
+            if (sidebarElement) {
+                sidebarElement.classList.toggle('collapsed');
+                localStorage.setItem('stSidebarCollapsed', sidebarElement.classList.contains('collapsed') ? '1' : '0');
+            }
+        }
+    </script>
 </body>
 </html>
