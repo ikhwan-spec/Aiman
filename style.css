@@ -76,7 +76,7 @@ body {
     padding-left: 8px;
 }
 
-/* EYE COMFORT FIX: Swapped --primary-blue text color for high-contrast off-white */
+/* Toggle Button */
 .toggle-btn {
     background: none;
     border: none;
@@ -116,7 +116,6 @@ body {
     transition: opacity 0.2s ease;
 }
 
-/* Highlights the "Transport" half of your brand text in a nice teal */
 .nav-brand-text span {
     color: var(--accent-teal);
 }
@@ -131,10 +130,10 @@ body {
 .sidebar-logo-zone {
     text-align: center;
     margin-bottom: 30px;
-    transition: transform 0.3s ease, opacity 0.2s ease;
+    transition: transform 0.3s ease, opacity 0.2s ease, height 0.3s ease, margin-bottom 0.3s ease;
 }
 
-/* Wraps the logo image so it behaves as a "back to home" control */
+/* Wraps the logo image */
 .logo-link {
     display: block;
     border-radius: 10px;
@@ -155,31 +154,35 @@ body {
     outline-offset: 4px;
 }
 
-/* Target the sidebar image asset */
+/* Sidebar brand logo image */
 .sidebar-brand-logo {
     width: 250px;
+    max-width: 100%;
     height: auto;
     margin: 0 auto;
     display: block;
     border-radius: 8px;
-    
-    /* THE FIX: These filters turn any dark/black image lines completely white */
     filter: invert(1) brightness(2); 
-    
     transition: filter 0.2s ease;
 }
 
-/* Soft glow-up when you hover over the logo link */
+/* Soft glow-up on hover */
 .logo-link:hover .sidebar-brand-logo {
     filter: invert(1) brightness(2.3) drop-shadow(0 0 10px rgba(0, 229, 255, 0.35));
 }
-/* Gracefully scale down and hide main brand logo on collapse */
+
+/* 
+   THE FIX: Gracefully scale down, completely hide, and disable 
+   interaction with the main logo on collapse so it doesn't spill out
+*/
 .sidebar-nav.collapsed .sidebar-logo-zone {
     opacity: 0;
     transform: scale(0.7);
     height: 0;
     margin-bottom: 0;
     pointer-events: none;
+    overflow: hidden;  /* Prevents image from spilling outside container boundary */
+    visibility: hidden; /* Stops click event rendering entirely */
 }
 
 /* Navigation Links Wrapper */
@@ -189,7 +192,6 @@ body {
     gap: 8px;
 }
 
-/* EYE COMFORT FIX: Softened navigation text links to off-white grey */
 .sidebar-links a {
     text-decoration: none;
     color: #a0a0ab;
@@ -198,7 +200,7 @@ body {
     font-size: 14px;
     padding: 12px;
     border-radius: 12px;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, padding 0.3s ease;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -206,7 +208,7 @@ body {
     position: relative;
 }
 
-/* Centers icons/emojis in placeholder slots */
+/* Center icons in slots */
 .nav-icon {
     font-size: 18px;
     display: inline-flex;
@@ -222,13 +224,14 @@ body {
     opacity: 1;
 }
 
-/* Hide string labels completely when collapsed */
+/* Hide text labels completely when collapsed */
 .sidebar-nav.collapsed .nav-text {
     opacity: 0;
     pointer-events: none;
+    display: none;
 }
 
-/* Active links item highlight */
+/* Hover behaviors */
 .sidebar-links a:hover {
     background: rgba(255, 255, 255, 0.06);
     color: #ffffff;
@@ -239,14 +242,14 @@ body {
     transform: scale(1.1);
 }
 
-/* Style for the active/selected page link */
+/* Style for active link */
 .sidebar-links a.active {
-    background-color: #2563eb; /* Vibrant blue accent */
+    background-color: #2563eb; 
     color: #ffffff;
     box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
 }
 
-/* Small accent tab that marks the active page, echoed in collapsed mode */
+/* Small active indicator tab */
 .sidebar-links a.active::before {
     content: "";
     position: absolute;
@@ -259,16 +262,27 @@ body {
     background: var(--accent-teal);
 }
 
+/* Keep icons aligned dead-center in collapsed mode */
 .sidebar-nav.collapsed .sidebar-links a {
     justify-content: center;
     padding: 12px 0;
 }
 
+.sidebar-nav.collapsed .sidebar-links a:hover {
+    transform: none; /* Prevents alignment vibration on hover */
+}
+
+/* Adjust active indicator in collapsed mode */
+.sidebar-nav.collapsed .sidebar-links a.active::before {
+    left: 0;
+    width: 3px;
+}
+
 /* ==========================================================================
-   CONTENT WRAPPER (Adapts automatically when navigation shifts)
+   CONTENT WRAPPER
    ========================================================================== */
 .content-wrapper {
-    margin-left: 260px; /* Default sidebar margin */
+    margin-left: 260px; 
     width: calc(100% - 260px);
     box-sizing: border-box;
     display: flex;
@@ -290,14 +304,14 @@ body {
     }
 }
 
-/* When sidebar has the '.collapsed' class, expand the main workspace */
+/* Expand content-wrapper when sidebar has '.collapsed' */
 .sidebar-nav.collapsed + .content-wrapper {
     margin-left: 70px;
     width: calc(100% - 70px);
 }
 
 /* ==========================================================================
-   CORE SITE STYLES (Your Original Code Unchanged)
+   CORE SITE STYLES (Unchanged)
    ========================================================================== */
 .hero {
     text-align: center;
@@ -432,7 +446,6 @@ body {
 
 /* ==========================================================================
    SCHEDULES PAGE — SEARCH BAR + LINE BADGES
-   (previously unstyled classes used in schedules.html)
    ========================================================================== */
 .search-container {
     margin-top: 10px;
